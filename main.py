@@ -17,7 +17,7 @@ def command(command):
 
 admin = False
 if os.getpid() != 0:
-    print(f"{Fore.BLUE}🛡️  Welcome administrator{Fore.YELLOW + os.getlogin() + Fore.BLUE} to the Nash115's terminal! {Fore.RESET}")
+    print(f"{Fore.BLUE}🛡️  Welcome administrator {Fore.YELLOW + os.getlogin() + Fore.BLUE} to the Nash115's terminal! {Fore.RESET}")
     admin = True
 else:
     print(f"👋 Welcome {Fore.BLUE + os.getlogin() + Fore.RESET} to the Nash115's terminal!")
