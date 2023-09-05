@@ -1,4 +1,5 @@
 import os,time
+from colorama import Fore
 
 def get_actual_folder():
     return os.getcwd()
@@ -16,22 +17,26 @@ def command(command):
 
 admin = False
 if os.getpid() != 0:
-    print("🛡️ Welcome administrator to the Nash115's terminal!")
+    print(f"{Fore.BLUE}🛡️  Welcome administrator{Fore.YELLOW + os.getlogin() + Fore.BLUE} to the Nash115's terminal! {Fore.RESET}")
     admin = True
 else:
-    print("👋 Welcome to the Nash115's terminal!")
+    print(f"👋 Welcome {Fore.BLUE + os.getlogin() + Fore.RESET} to the Nash115's terminal!")
 
 os.chdir(f"{os.path.expanduser('~')}")
 
 cmand = ""
 while True:
     if admin:
-        cmand = input(f"🚀 {os.getcwd()}# ")
-    else:
         cmand = input(f"🚀 {os.getcwd()}> ")
+    else:
+        cmand = input(f"{os.getcwd()}> ")
     if cmand == "exit":
         break
-    print(command(cmand))
+    for char in command(cmand):
+        print(char, end='', flush=True)
+        time.sleep(0.0001)
+    print()
+    # print(command(cmand))
 
 print("🌇 Goodbye!")
 time.sleep(1.5)
